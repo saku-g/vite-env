@@ -1,0 +1,10 @@
+@use '../global/' as *;
+
+.l-container {
+  width: calc(335 / 375 * 100%);
+  margin-inline: auto;
+
+  @include mq(md) {
+    width: min(100%, calc(var(--width-content) * 1px));
+  }
+}

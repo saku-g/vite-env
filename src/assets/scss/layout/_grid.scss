@@ -1,0 +1,156 @@
+// Grid System With Flex
+// See: https://shibajuku.net/olex/
+// -----------------------------------
+
+@use "../global/" as *;
+
+// Variables
+// -------------------------
+// グリッドの列数とアイテム間の余白を設定
+$_columns: 12;
+$_spacings: (
+  1: 5,
+  2: 10,
+  3: 15,
+  4: 20,
+  5: 25,
+  6: 30,
+  7: 35,
+  8: 40,
+);
+
+.l-grid {
+  $this: &;
+
+  // Base
+  // -------------------------
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  // Gap Base
+  // -------------------------
+  &[data-gap] {
+    width: auto;
+
+    & > #{$this}__item {
+      border: solid transparent;
+      background-clip: padding-box;
+    }
+  }
+
+  // 各ブレークポイントごとに設定
+  @each $name, $breakpoint in $breakpoints {
+    // プレフィクス（0の場合はprefixなし）
+    $bp-prefix: if($breakpoint == 0, null, "#{$name}:");
+
+    @include mq($name) {
+      // Column
+      // -------------------------
+      // ex) data-col="1 sm:2 md:3 lg:4"
+      @for $col from 1 through $_columns {
+        &__item[data-col~="#{$bp-prefix}#{$col}"] {
+          width: calc($col / $_columns * 100%);
+        }
+      }
+
+      // 5段組
+      &__item[data-col~="#{$bp-prefix}five"] {
+        width: 20%;
+      }
+
+      // Gap
+      // -------------------------
+      // ex) data-gap="1 sm:2 xl:3"
+      @each $i, $spacing in $_spacings {
+        // px -> remに変換
+        $size: calc($spacing / 16 * 1rem);
+
+        &[data-gap~="#{$bp-prefix}#{$i}"] {
+          margin: calc($size / 2 * -1);
+
+          & > #{$this}__item {
+            border-width: calc($size / 2);
+          }
+        }
+      }
+
+      // Alignment
+      // -------------------------
+      // ex) data-align="end sm:bottom"
+      $selectors: ($this, #{$this}__item); // コンテナとアイテム同様に設定
+
+      @each $selector in $selectors {
+        @at-root {
+          #{$selector}[data-align~="#{$bp-prefix}start"] {
+            justify-content: flex-start;
+          }
+
+          #{$selector}[data-align~="#{$bp-prefix}center"] {
+            justify-content: center;
+          }
+
+          #{$selector}[data-align~="#{$bp-prefix}end"] {
+            justify-content: flex-end;
+          }
+
+          #{$selector}[data-align~="#{$bp-prefix}justify"] {
+            justify-content: space-between;
+          }
+
+          #{$selector}[data-align~="#{$bp-prefix}top"] {
+            align-items: flex-start;
+          }
+
+          #{$selector}[data-align~="#{$bp-prefix}middle"] {
+            align-items: center;
+          }
+
+          #{$selector}[data-align~="#{$bp-prefix}bottom"] {
+            align-items: flex-end;
+          }
+        }
+      }
+
+      // Direction
+      // -------------------------
+      // ex) data-dir="row sm:reverse"
+      &[data-dir~="#{$bp-prefix}row"] {
+        flex-direction: row;
+      }
+
+      &[data-dir~="#{$bp-prefix}reverse"] {
+        flex-direction: row-reverse;
+      }
+
+      // Order
+      // -------------------------
+      // ex) data-order="-1 md:0"
+      @for $i from -1 through 3 {
+        &__item[data-order~="#{$bp-prefix}#{$i}"] {
+          order: $i;
+        }
+      }
+
+      // Grow / Shrink
+      // -------------------------
+      // ex) data-grow="0" data-shrink="1"
+      @for $i from 0 through 3 {
+        &__item[data-grow~="#{$bp-prefix}#{$i}"] {
+          flex-grow: $i;
+        }
+        &__item[data-shrink~="#{$bp-prefix}#{$i}"] {
+          flex-shrink: $i;
+        }
+      }
+    }
+  }
+}

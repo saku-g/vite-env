@@ -6,16 +6,20 @@ import imageminSvgo from 'imagemin-svgo';
 import imageminWebp from 'imagemin-webp';
 
 /**
- * 画像圧縮後、webpを生成します
+ * 画像圧縮後、webpを生成
  */
 
-const srcDir = 'src/assets/img';
+const srcDirName = 'img-origin';
+const srcDir = `src/assets/${srcDirName}`;
 const outDir = 'public/assets/img';
+
+// 正規表現のコンストラクタを使用して正規表現を変数化
+const regexVar = new RegExp(`${srcDirName}/`);
 
 imagemin([`${srcDir}/**/*.{jpg,jpeg,png,gif,svg}`], {
   plugins: [imageminMozjpeg(), imageminPngquant(), imageminGifsicle(), imageminSvgo()],
   replaceOutputDir: (output) => {
-    return output.replace(/img\//, `../../${outDir}/`);
+    return output.replace(regexVar, `../../${outDir}/`);
   },
 })
   .then(() => {

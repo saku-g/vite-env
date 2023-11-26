@@ -1,0 +1,19 @@
+// hoverメディア特性を使い、デバイスによってhoverスタイルを分岐
+// See: https://developer.mozilla.org/ja/docs/Web/CSS/@media/hover
+// See: https://qiita.com/gilly/items/546adecd18a8db3fd059
+
+@mixin hover() {
+  // スマートフォン・タブレット
+  @media (hover: none) and (any-pointer: coarse) {
+    &:active {
+      @content;
+    }
+  }
+
+  // デスクトップ
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}

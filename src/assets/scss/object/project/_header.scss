@@ -1,0 +1,30 @@
+@use "../../global/" as *;
+
+.p-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 30px;
+
+  @include mq(md) {
+    padding-block: 50px;
+  }
+}
+
+.p-header__logo {
+  margin: 0;
+  line-height: 1;
+}
+
+.p-header__logoLink {
+  display: block;
+  width: 160px;
+
+  @include mq(md) {
+    width: 280px;
+  }
+}
+
+.p-header__logoImg {
+  width: 100%;
+}

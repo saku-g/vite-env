@@ -1,0 +1,21 @@
+@use "../../global/" as *;
+
+.p-globalNav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  @include mq(md) {
+    gap: 80px;
+  }
+}
+
+.p-globalNav__link {
+  color: var(--color-text);
+  font-family: Helvetica, sans-serif;
+
+  @include hover {
+    border-bottom: 1px solid currentcolor;
+  }
+}

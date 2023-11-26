@@ -1,0 +1,49 @@
+@use "../../global/" as *;
+
+.c-button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 1rem;
+  border: none;
+  appearance: none;
+}
+
+.c-button.-secondary {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  transition:
+    background-color 0.25s ease-in-out,
+    color 0.25s ease-in-out;
+  border: 1px solid currentcolor;
+  border-radius: 3px;
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+
+  @include mq(md) {
+    width: min(100%, 220px);
+  }
+
+  @include hover {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 1rem;
+    width: 5px;
+    height: 9px;
+    background-color: currentcolor;
+    color: inherit;
+    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 9"><path d="M3.757.826a1,1,0,0,1,1.487,0L7.5,3.331A1,1,0,0,1,6.755,5H2.245A1,1,0,0,1,1.5,3.331Z" transform="translate(5) rotate(90)" /></svg>');
+    mask-repeat: no-repeat;
+    mask-size: cover;
+  }
+}

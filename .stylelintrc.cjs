@@ -2,7 +2,7 @@ module.exports = {
   extends: ['stylelint-config-standard-scss', 'stylelint-config-property-sort-order-smacss'],
   ignoreFiles: ['**/node_modules/**'],
   rules: {
-    // Patternはケバブケース以外エラーとなるため、上書き
+    // Patternはケバブケース以外エラーとなるため上書き
     'selector-id-pattern': null,
     'selector-class-pattern': null,
     'keyframes-name-pattern': null,

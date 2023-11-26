@@ -1,0 +1,17 @@
+// For screen readers
+// See: https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/
+// See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+// ----------------------------------- //
+
+.u-visuallyHidden:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
