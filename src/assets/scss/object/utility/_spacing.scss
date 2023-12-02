@@ -7,18 +7,18 @@
 // Variables
 // -------------------------
 // 余白の基準値とループ回数
-$_space-base: 5;
+$_space-base: 8;
 $_loop-count: 20;
 $_properties: (
   "m": "margin",
   "p": "padding",
 );
 
-// .u-{property}{sides}-{breakpoint}-{size}の形式でクラスを生成
-// ex) .u-mx-3, .u-py-sm-3, .u-mt-md-2
+// {breakpoint\:}.u-{property}{sides}-{size}の形式でクラスを生成
+// ex) .u-mx-3, .md:u-py-3, .lg:u-mt-2
 @each $name, $breakpoint in $breakpoints {
   // プレフィクス（0の場合はprefixなし）
-  $bp-prefix: if($breakpoint == 0, null, "-#{$name}");
+  $bp-prefix: if($breakpoint == 0, null, "#{$name}\\:");
 
   @include mq($name) {
     @for $i from 0 through $_loop-count {
@@ -28,39 +28,39 @@ $_properties: (
       @each $shorthand, $property in $_properties {
         // Horizontal(x)
         // -------------------------
-        .u-#{$shorthand}x#{$bp-prefix}-#{$i} {
+        .#{$bp-prefix}u-#{$shorthand}x-#{$i} {
           #{$property}-left: $size;
           #{$property}-right: $size;
         }
 
         // Vertical(y)
         // -------------------------
-        .u-#{$shorthand}y#{$bp-prefix}-#{$i} {
+        .#{$bp-prefix}u-#{$shorthand}y-#{$i} {
           #{$property}-top: $size;
           #{$property}-bottom: $size;
         }
 
         // Top(t)
         // -------------------------
-        .u-#{$shorthand}t#{$bp-prefix}-#{$i} {
+        .#{$bp-prefix}u-#{$shorthand}t-#{$i} {
           #{$property}-top: $size;
         }
 
         // Right(r)
         // -------------------------
-        .u-#{$shorthand}r#{$bp-prefix}-#{$i} {
+        .#{$bp-prefix}u-#{$shorthand}r-#{$i} {
           #{$property}-right: $size;
         }
 
         // Bottom(b)
         // -------------------------
-        .u-#{$shorthand}b#{$bp-prefix}-#{$i} {
+        .#{$bp-prefix}u-#{$shorthand}b-#{$i} {
           #{$property}-bottom: $size;
         }
 
         // Left(l)
         // -------------------------
-        .u-#{$shorthand}l#{$bp-prefix}-#{$i} {
+        .#{$bp-prefix}u-#{$shorthand}l-#{$i} {
           #{$property}-left: $size;
         }
       }

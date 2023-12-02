@@ -1,7 +1,29 @@
-.u-wbr {
-  display: inline-block;
-}
+// Text
+// テキスト関連のユーティリティクラス
+// -----------------------------------
 
-.u-text-center {
-  text-align: center;
+@use "../../global/" as *;
+
+// Align
+// -------------------------
+// {breakpoint\:}.u-text-{value}の形式でクラスを生成
+// ex) .u-text-center, .md:u-text-left
+
+@each $name, $breakpoint in $breakpoints {
+  // プレフィクス（0の場合はprefixなし）
+  $bp-prefix: if($breakpoint == 0, null, "#{$name}\\:");
+
+  @include mq($name) {
+    .#{$bp-prefix}u-text-left {
+      text-align: center;
+    }
+
+    .#{$bp-prefix}u-text-center {
+      text-align: center;
+    }
+
+    .#{$bp-prefix}u-text-right {
+      text-align: right;
+    }
+  }
 }

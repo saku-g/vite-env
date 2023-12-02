@@ -1,0 +1,29 @@
+// Display
+// -----------------------------------
+
+@use "../../global/" as *;
+
+// .u-{value}の形式でクラスを生成
+// ex) .u-block, .sm:u-none, .lg:u-inline-block
+@each $name, $breakpoint in $breakpoints {
+  // プレフィクス（0の場合はprefixなし）
+  $bp-prefix: if($breakpoint == 0, null, "#{$name}\\:");
+
+  @include mq($name) {
+    .#{$bp-prefix}u-block {
+      display: block;
+    }
+
+    .#{$bp-prefix}u-inline-block {
+      display: inline-block;
+    }
+
+    .#{$bp-prefix}u-inline {
+      display: inline;
+    }
+
+    .#{$bp-prefix}u-none {
+      display: none;
+    }
+  }
+}

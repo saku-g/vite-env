@@ -1,0 +1,29 @@
+// Convert
+// -----------------------------------
+
+@use "sass:map";
+
+// px → rem
+@function rem($px, $base: 16) {
+  @return calc($px / $base * 1rem);
+}
+
+// px → vw
+// viewportはメディアクエリのMixinで値が切り替わるようCSS変数で設定
+@function vw($px) {
+  @return calc(#{$px} / var(--width-viewport) * 100vw);
+}
+
+// clamp()関数の推奨値を計算
+//  $min-size: 最小値
+//  $max-size: 最大値
+//  $min-vw: 適用したい範囲の最小ビューポート幅
+//  $max-vw: 適用したい範囲の最大ビューポート幅
+// Usage: fluid-size()
+@function fluid-size($min-size, $max-size, $min-vw, $max-vw) {
+  // See: https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
+  $v: calc((100 * ($max-size - $min-size)) / ($max-vw - $min-vw));
+  $r: calc(($min-vw * $max-size - $max-vw * $min-size) / ($min-vw - $max-vw));
+
+  @return clamp(rem($min-size), $v * 1vw + rem($r), rem($max-size));
+}

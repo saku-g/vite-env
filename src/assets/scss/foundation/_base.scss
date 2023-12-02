@@ -2,17 +2,26 @@
 // 基本的なスタイル・タグのみ指定
 // -----------------------------------
 
+@use "../global/" as *;
+
 :root {
-  --font-base: arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", meiryo,
-    sans-serif;
+  --font-base: "Helvetica Neue", arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", meiryo, sans-serif;
   --color-main: #333;
-  --color-accent: #24a8bf;
+  --color-accent: #ca2a48;
   --color-text: var(--color-main);
-  --color-text-light: #8b8b8b;
-  --color-bg: #efefef;
+  --color-link: #349bf4;
   --color-white: #fff;
+  --color-white-rgb: 255 255 255;
   --color-black: #000;
+  --color-black-rgb: 0 0 0;
   --width-content: 1110;
+  --width-sp-comp: 375;
+  --width-pc-comp: 1440;
+  --width-viewport: var(--width-sp-comp);
+
+  @include mq(md) {
+    --width-viewport: var(--width-pc-comp);
+  }
 }
 
 html {
@@ -40,6 +49,22 @@ ul {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+
+  &:not([class]) {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @include hover {
+    text-decoration: none;
+  }
+}
+
+button {
+  display: inline-block;
+  appearance: none;
   cursor: pointer;
 }
 
