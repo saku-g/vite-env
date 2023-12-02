@@ -1,8 +1,6 @@
 // Convert
 // -----------------------------------
 
-@use "sass:map";
-
 // px → rem
 @function rem($px, $base: 16) {
   @return calc($px / $base * 1rem);
@@ -19,7 +17,7 @@
 //  $max-size: 最大値
 //  $min-vw: 適用したい範囲の最小ビューポート幅
 //  $max-vw: 適用したい範囲の最大ビューポート幅
-// Usage: fluid-size()
+// Usage: fluid-size(24, 48, 576, 1280)
 @function fluid-size($min-size, $max-size, $min-vw, $max-vw) {
   // See: https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
   $v: calc((100 * ($max-size - $min-size)) / ($max-vw - $min-vw));
