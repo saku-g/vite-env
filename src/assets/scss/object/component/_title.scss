@@ -1,25 +1,5 @@
 @use "../../global/" as *;
 
 .c-title {
-  margin: 0;
   font-weight: 700;
-}
-
-.c-title.-primary {
-  font-size: 0.75rem;
-  letter-spacing: 0.03em;
-
-  @include mq(md) {
-    font-size: 0.8125rem;
-  }
-}
-
-.c-title.-primary .c-title__main {
-  display: block;
-  color: var(--color-accent);
-  font-size: 1.875rem;
-
-  @include mq(md) {
-    font-size: 2rem;
-  }
 }

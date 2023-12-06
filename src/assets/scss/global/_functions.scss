@@ -1,0 +1,37 @@
+// Functions
+// -----------------------------------
+
+// px -> rem
+// -------------------------
+@function rem($px, $base: 16) {
+  @return calc($px / $base * 1rem);
+}
+
+// px -> em
+// -------------------------
+@function em($px, $base: 16) {
+  @return calc($px / $base * 1em);
+}
+
+// px -> vw
+// -------------------------
+@function vw($px) {
+  @return calc(#{$px} / var(--comp-width) * 100vw);
+}
+
+// clampの推奨値を計算
+// -------------------------
+// See: https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
+// Usage:  font-size: my-clamp(16, 24, 600, 1400)
+// Output: font-size: clamp(1rem, calc(2.4vw + 2rem), 3rem);
+
+// $min-size: 最小値
+// $max-size: 最大値
+// $min-vw: 適用したい範囲の最小ビューポート幅
+// $max-vw: 適用したい範囲の最大ビューポート幅
+@function my-clamp($min-size, $max-size, $min-vw, $max-vw) {
+  $v: calc((100 * ($max-size - $min-size)) / ($max-vw - $min-vw));
+  $r: calc(($min-vw * $max-size - $max-vw * $min-size) / ($min-vw - $max-vw));
+
+  @return clamp(rem($min-size), $v * 1vw + rem($r), rem($max-size));
+}

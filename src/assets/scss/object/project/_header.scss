@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: 30px;
+  padding-block: rem(20);
 
   @include mq(md) {
-    padding-block: 50px;
+    padding-block: rem(50);
   }
 }
 
@@ -18,11 +18,7 @@
 
 .p-header__logoLink {
   display: block;
-  width: 160px;
-
-  @include mq(md) {
-    width: 280px;
-  }
+  width: 200px;
 }
 
 .p-header__logoImg {

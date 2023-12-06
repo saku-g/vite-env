@@ -1,26 +1,29 @@
-// Base
-// 基本的なスタイル・タグのみ指定
-// -----------------------------------
-
 @use "../global/" as *;
 
 :root {
   --font-base: "Helvetica Neue", arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", meiryo, sans-serif;
-  --color-main: #333;
-  --color-accent: #ca2a48;
-  --color-text: var(--color-main);
-  --color-link: #349bf4;
   --color-white: #fff;
   --color-white-rgb: 255 255 255;
   --color-black: #000;
   --color-black-rgb: 0 0 0;
-  --width-content: 1110;
-  --width-sp-comp: 375;
-  --width-pc-comp: 1440;
-  --width-viewport: var(--width-sp-comp);
+  --color-base: #f5f5f5;
+  --color-main: #333;
+  --color-accent: #ca2a48;
+  --color-text: var(--color-main);
+  --color-link: #349bf4;
+  --content-width: 1110;
+
+  // Design Comp Width
+  // -------------------------
+  // デザインカンプ幅。ブレイクポイントごとに上書き
+  --comp-width: 375;
 
   @include mq(md) {
-    --width-viewport: var(--width-pc-comp);
+    --comp-width: 768;
+  }
+
+  @include mq(lg) {
+    --comp-width: 1336;
   }
 }
 

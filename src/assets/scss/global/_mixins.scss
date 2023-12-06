@@ -1,0 +1,61 @@
+// Mixins
+// -----------------------------------
+
+@use "sass:map";
+
+// Media Query
+// -------------------------
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 750px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+) !default;
+
+@mixin mq($name, $not: false) {
+  @if not map.has-key($breakpoints, $name) {
+    @error 'ブレイクポイント【#{$name}】は定義されていません。';
+  }
+
+  $breakpoint: map.get($breakpoints, $name);
+
+  // `@media (min-width: 0) {...}`は不要とする
+  @if $breakpoint == 0 {
+    @content;
+  }
+
+  // $not:trueの場合、notキーワードでメディアクエリーを反転
+  @else if $not {
+    @media not all and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+// hover
+// -------------------------
+// hoverメディア特性を使い、デバイスによってhoverスタイルを分岐
+// See: https://developer.mozilla.org/ja/docs/Web/CSS/@media/hover
+// See: https://qiita.com/gilly/items/546adecd18a8db3fd059
+
+@mixin hover() {
+  // スマートフォン・タブレット
+  @media (hover: none) and (any-pointer: coarse) {
+    &:active {
+      @content;
+    }
+  }
+
+  // デスクトップ
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
