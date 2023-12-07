@@ -9,7 +9,7 @@ import imageminWebp from 'imagemin-webp';
  * 画像圧縮後、webpを生成
  */
 
-const srcDirName = 'img-origin';
+const srcDirName = 'original-img';
 const srcDir = `src/assets/${srcDirName}`;
 const outDir = 'public/assets/img';
 

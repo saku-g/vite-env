@@ -4,22 +4,19 @@
       "title": "はじめてのブログ",
       "publish": "2023/01/01",
       "author": "Sacck",
-      "content": "はじめまして...",
-      "thumbnailFile": "thumbnail01"
+      "content": "はじめまして..."
     },
     {
       "title": "2回目のブログ",
       "publish": "2023/01/10",
       "author": "Sacck",
-      "content": "今日は...",
-      "thumbnailFile": "thumbnail02"
+      "content": "今日は..."
     },
     {
       "title": "最後のブログ",
       "publish": "2023/02/10",
       "author": "Sacck",
-      "content": "なんと今日で...",
-      "thumbnailFile": "thumbnail03"
+      "content": "なんと今日で..."
     }
   ]
 }
