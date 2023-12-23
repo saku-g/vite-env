@@ -2,15 +2,11 @@
 
 :root {
   --font-base: "Helvetica Neue", arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", meiryo, sans-serif;
-  --color-white: #fff;
-  --color-white-rgb: 255 255 255;
-  --color-black: #000;
-  --color-black-rgb: 0 0 0;
-  --color-base: #f5f5f5;
-  --color-main: #333;
-  --color-accent: #ca2a48;
-  --color-text: var(--color-main);
-  --color-link: #349bf4;
+  --base-color: #f5f5f5;
+  --main-color: #333;
+  --accent-color: #ca2a48;
+  --text-color: var(--main-color);
+  --link-color: #349bf4;
   --content-width: 1110;
 
   // Design Comp Width
@@ -36,7 +32,6 @@ html {
 body {
   box-sizing: border-box;
   min-block-size: 100%;
-  background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-base);
   -webkit-font-smoothing: antialiased;

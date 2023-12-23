@@ -10,7 +10,7 @@
     "lint:style": "stylelint --fix \"src/**/*.scss\"",
     "lint:es": "eslint --fix \"src/**/*.js\"",
     "watch:img": "chokidar \"src/assets/original-img/**/*\" -c \"node sharp.js\" --initial",
-    "build:img": "npm run clean:img && node imagemin.js",
+    "build:img": "npm run clean:img && node sharp.js",
     "dev": "npm run watch:img & vite",
     "build": "run-p lint:* && npm run build:img && vite build",
     "preview": "vite preview"

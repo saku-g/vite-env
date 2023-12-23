@@ -40,7 +40,6 @@ export default defineConfig({
         entryFileNames: `assets/js/[name].js`,
         chunkFileNames: `assets/js/[name].js`,
         assetFileNames: (assetInfo) => {
-          console.log(assetInfo.name);
           if (/\.css$/.test(assetInfo.name)) {
             return 'assets/css/[name].[ext]';
           }
