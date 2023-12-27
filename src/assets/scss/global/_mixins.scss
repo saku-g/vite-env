@@ -1,17 +1,14 @@
-// Mixins
-// -----------------------------------
-
 @use "sass:map";
 
 // Media Query
 // -------------------------
 $breakpoints: (
   xs: 0,
-  sm: 576px,
-  md: 750px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
+  sm: calc(576 / 16 * 1em),
+  md: calc(768 / 16 * 1em),
+  lg: calc(992 / 16 * 1em),
+  xl: calc(1200 / 16 * 1em),
+  xxl: calc(1400 / 16 * 1em),
 ) !default;
 
 @mixin mq($name, $not: false) {
@@ -39,10 +36,10 @@ $breakpoints: (
 }
 
 // hover
+// ホバークエリでデバイス毎に分岐
 // -------------------------
-// hoverメディア特性を使い、デバイスによってhoverスタイルを分岐
-// See: https://developer.mozilla.org/ja/docs/Web/CSS/@media/hover
-// See: https://qiita.com/gilly/items/546adecd18a8db3fd059
+// @see https://developer.mozilla.org/ja/docs/Web/CSS/@media/hover
+// @see https://qiita.com/gilly/items/546adecd18a8db3fd059
 
 @mixin hover() {
   // スマートフォン・タブレット

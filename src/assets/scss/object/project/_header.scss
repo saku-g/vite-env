@@ -4,23 +4,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: rem(20);
-
-  @include mq(md) {
-    padding-block: rem(50);
-  }
-}
-
-.p-header__logo {
-  margin: 0;
-  line-height: 1;
-}
-
-.p-header__logoLink {
-  display: block;
-  width: 200px;
-}
-
-.p-header__logoImg {
-  width: 100%;
 }

@@ -8,19 +8,8 @@
   --text-color: var(--main-color);
   --link-color: #349bf4;
   --content-width: 1110;
-
-  // Design Comp Width
-  // -------------------------
-  // デザインカンプ幅。ブレイクポイントごとに上書き
-  --comp-width: 375;
-
-  @include mq(md) {
-    --comp-width: 768;
-  }
-
-  @include mq(lg) {
-    --comp-width: 1336;
-  }
+  --sp-comp-width: 375;
+  --pc-comp-width: 1366;
 }
 
 html {
@@ -32,7 +21,8 @@ html {
 body {
   box-sizing: border-box;
   min-block-size: 100%;
-  color: var(--color-text);
+  background-color: var(--base-color);
+  color: var(--text-color);
   font-family: var(--font-base);
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
